@@ -29,7 +29,7 @@ jobs:
     name: ServiceNow Security scan
     # needs: build
     runs-on: ubuntu-latest
-
+    continue-on-error: true
     # env:
     #   ACTIONS_STEP_DEBUG: false
 
@@ -118,7 +118,6 @@ jobs:
           job-name: 'Register Package'
           artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
           package-name: 'registerpackage.war'
-          continue-on-error: true
           
       - name: ServiceNow Register Artifact
         uses: ServiceNow/servicenow-devops-register-package@scratch/STRY56331515
@@ -126,7 +125,6 @@ jobs:
           devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          continue-on-error: true
           context-github: ${{ toJSON(github) }}
           job-name: 'ServiceNow Register Artifact'
           artifacts: '[{"name": "com:customactiondemo","version": "1.${{ github.run_number }}","semanticVersion": "1.${{ github.run_number }}.0","repositoryName": "${{ github.repository }}"}]'
