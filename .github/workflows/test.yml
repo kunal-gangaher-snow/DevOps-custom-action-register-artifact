@@ -74,7 +74,7 @@ jobs:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Build'
-          xml-report-filename: valid-xunit.xml
+          xml-report-filename: testng.xml
 
       # - name: ServiceNow DevOps Security Results
       #   uses: ServiceNow/servicenow-devops-security-result@v2.0.0
